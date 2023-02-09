@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { PostDetail } from "./PostDetail";
+import {useQuery} from 'react-query';
+
 const maxPostPage = 10;
 
 async function fetchPosts() {
@@ -14,12 +16,13 @@ export function Posts() {
   const [selectedPost, setSelectedPost] = useState(null);
 
   // replace with useQuery
-  const data: any[] = [];
+  const {data} = useQuery('posts', fetchPosts); // (query name, query function-쿼리에 대한 데이터를 가져오는 방법)
+  if (!data) return <div/>;
 
   return (
     <>
       <ul>
-        {data.map((post) => (
+        {data.map((post: any) => (
           <li
             key={post.id}
             className="post-title"
