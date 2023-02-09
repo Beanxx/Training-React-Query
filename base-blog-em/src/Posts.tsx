@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { PostDetail } from "./PostDetail";
-import {useQuery} from 'react-query';
+import { useQuery } from "react-query";
 
 const maxPostPage = 10;
 
@@ -16,8 +16,18 @@ export function Posts() {
   const [selectedPost, setSelectedPost] = useState(null);
 
   // replace with useQuery
-  const {data} = useQuery('posts', fetchPosts); // (query name, query function-쿼리에 대한 데이터를 가져오는 방법)
-  if (!data) return <div/>;
+  const { data, isError, error, isLoading } = useQuery("posts", fetchPosts, {
+    staleTime: 2000, // 2초마다 만료되도록 설정 (2초 동안 fresh 상태였다가 stale 상태로 바뀜)
+  }); // (query name, query function-쿼리에 대한 데이터를 가져오는 방법)
+
+  if (isLoading) return <h3>Loading...</h3>;
+  if (isError)
+    return (
+      <>
+        <h3>Oops, something went wrong</h3>
+        {/* <p>{error.toString()}</p> */}
+      </>
+    );
 
   return (
     <>
