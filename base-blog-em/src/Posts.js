@@ -29,7 +29,7 @@ export function Posts() {
   }, [currentPage, queryClient]);
 
   // replace with useQuery
-  const { data, isError, error, isLoading } = useQuery(
+  const { data, isError, error, isLoading, isFetching } = useQuery(
     ["posts", currentPage],
     () => fetchPosts(currentPage),
     {
@@ -39,11 +39,12 @@ export function Posts() {
   ); // (query name, query function-쿼리에 대한 데이터를 가져오는 방법)
 
   if (isLoading) return <h3>Loading...</h3>;
+  if (isFetching) return <h3>Fetching in progres...</h3>;
   if (isError)
     return (
       <>
         <h3>Oops, something went wrong</h3>
-        <p>{error.toString()}</p>
+        <p>{error.toString()}</p>;
       </>
     );
 
