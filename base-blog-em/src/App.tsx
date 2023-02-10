@@ -1,8 +1,7 @@
-import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import "./App.css";
 import { Posts } from "./Posts";
+import "./App.css";
 
 const queryClient = new QueryClient();
 
