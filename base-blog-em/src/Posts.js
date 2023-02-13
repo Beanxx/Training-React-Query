@@ -34,7 +34,7 @@ export function Posts() {
     () => fetchPosts(currentPage),
     {
       staleTime: 2000, // 2초마다 만료되도록 설정 (2초 동안 fresh 상태였다가 stale 상태로 바뀜)
-      keepPreviousData: true, // 이전 페이지로 돌아갔을 떄 캐시에 해당 데이터가 있도록
+      keepPreviousData: true, // 이전 페이지로 돌아갔을 떄 캐시에 해당 데이터가 있도록!
     }
   ); // (query name, query function-쿼리에 대한 데이터를 가져오는 방법)
 

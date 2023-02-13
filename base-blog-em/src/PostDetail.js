@@ -23,16 +23,6 @@ async function updatePost(postId) {
   return response.json();
 }
 
-// type PostType = {
-//   id: number;
-//   title: string;
-//   body: string;
-// };
-
-// interface PostProps {
-//   post: PostType;
-// }
-
 export function PostDetail({ post }) {
   // replace with useQuery
   const { data, isLoading, isError, error } = useQuery(
