@@ -6,9 +6,11 @@ import { ReactQueryDevtools } from "react-query/devtools"; // 노드 환경을 �
 import { InfinitePeople } from "./people/InfinitePeople";
 import { InfiniteSpecies } from "./species/InfiniteSpecies";
 
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <QueryClientProvider client={QueryClient}>
+    <QueryClientProvider client={queryClient}>
       <div className="App">
         <h1>Infinite SWAPI</h1>
         <InfinitePeople />
